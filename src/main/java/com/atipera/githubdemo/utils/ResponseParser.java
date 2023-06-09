@@ -6,7 +6,9 @@ import com.atipera.githubdemo.response.GitHubRepoResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ResponseParser {
@@ -25,12 +27,13 @@ public class ResponseParser {
                                                     c.getCommit().getSha())
                                             )
                                     .toList()
-                            )
-                                            .build();
+                            ).build();
 
             response.add(entry);
         }
 
-        return response;
+        return response.stream()
+                .sorted(Comparator.comparing(GitHubRepoResponse::getRepositoryName))
+                .collect(Collectors.toList());
     }
 }
