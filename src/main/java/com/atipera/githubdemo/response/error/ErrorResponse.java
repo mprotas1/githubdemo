@@ -1,3 +1,11 @@
 package com.atipera.githubdemo.response.error;
 
-public record ErrorResponse(Integer code, String message) {}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class ErrorResponse {
+    private Integer code;
+    private String message;
+}
