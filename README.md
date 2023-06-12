@@ -31,3 +31,4 @@ Short application to retrieve user's repositories using GitHub API.
 * Java 17
 * WebClient
 * GitHub API
+* Lombok
